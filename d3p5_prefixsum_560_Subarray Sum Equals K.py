@@ -26,7 +26,16 @@ class Solution:
             prefix_sum_dic[running_sum] = prefix_sum_dic.get(running_sum, 0) + 1
 
         return result
+    
+    
+if __name__ == "__main__":
+    solution = Solution()
+    
+    test_cases = [
+        {"input": ([1, -1, 1, 1, 1, 1], 3), "expected_output": 2},
+        {"input": ([1, -1, 1, 1, 1, 1], 3), "expected_output": 2}
+    ]
+    for test_case in test_cases:
+        assert solution.subarraySum(test_case["input"][0], test_case["input"][1]) == test_case["expected_output"]
+        
 
-
-solution = Solution()
-print(solution.subarraySum([1, -1, 1, 1, 1, 1], 3))
