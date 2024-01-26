@@ -23,3 +23,9 @@ class Solution:
         head.next = None
         
         return reversed_node
+    
+nodes1 = [ListNode(1), ListNode(2), ListNode(3), ListNode(4)]
+for i in range(len(nodes1) - 1):
+    nodes1[i].next = nodes1[i + 1]
+solution = Solution()
+solution.reverseList(nodes1[0])
