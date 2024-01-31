@@ -4,6 +4,7 @@ class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         res = []
         self.dfs(0, candidates, target, [], 0, res)
+        return res
         
     def dfs(self, start, nums, target, path, current_sum, res):
         if current_sum == target:
@@ -19,9 +20,10 @@ class Solution:
             
             self.dfs(i, nums, target, path, current_sum, res)
             
+            # backtrack
             current_sum -= nums[i]
             path.pop()
-            
+        
 
 if __name__ == "__main__":
     solution = Solution()
