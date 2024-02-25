@@ -5,7 +5,11 @@ import collections
 class Node:
     def __init__(self):
         self.children = collections.defaultdict(Node)
+        # self.children = [None] * 26
+        # self.children = {}
         self.is_word = False
+        # self.is_prefix = False
+        # self.freq = 0
         self.usage = 0
 
 
