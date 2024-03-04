@@ -4,7 +4,7 @@ class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
         low, high = 1, len(nums) - 1
         
-        while low <= high:
+        while low < high:
             mid = low + ((high - low) // 2)
             count = 0
             for num in nums:
