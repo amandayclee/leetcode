@@ -11,7 +11,8 @@ if __name__ == "__main__":
     
     test_cases = [
         {"input": 128, "expected_output": 1},
-        {"input": 11, "expected_output": 3}
+        {"input": 11, "expected_output": 3},
+        {"input": 2147483645, "expected_output": 30}
     ]
     for test_case in test_cases:
         assert solution.hammingWeight(test_case["input"]) == test_case["expected_output"]
