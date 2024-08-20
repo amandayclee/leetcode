@@ -1,3 +1,4 @@
+# https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/
 from typing import List
 
 class Solution:
@@ -11,7 +12,7 @@ class Solution:
             elif current_sum > target:
                 right -= 1
             else:
-                return [left+1, right+1]
+                return [left + 1, right + 1]
             
     
 if __name__ == "__main__":
@@ -29,3 +30,6 @@ if __name__ == "__main__":
         assert solution.twoSum(*input_data) == expected_output, f"Test case failed: {test_case}"
     
     print("All test cases passed!")
+    
+    # TC O(N)
+    # SC O(1)
