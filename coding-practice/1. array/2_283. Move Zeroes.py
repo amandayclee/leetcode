@@ -10,7 +10,7 @@ class Solution:
         
         for check_every_element_at in range(len(nums)):
             if nums[check_every_element_at] != 0:
-                nums[start_zero_at] = nums[start_zero_at]
+                nums[start_zero_at] = nums[check_every_element_at]
                 start_zero_at += 1
                 
         while start_zero_at < len(nums):
