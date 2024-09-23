@@ -45,7 +45,7 @@ if __name__ == "__main__":
     solution = Solution()
     
     test_cases = [
-        {"input": (13, 3), "expected_output": 4},
+        {"input": (119, 3), "expected_output": 4},
         {"input": (7, -3), "expected_output": -2},
         {"input": (10, 3), "expected_output": 3},
         {"input": (1, 1), "expected_output": 1},
