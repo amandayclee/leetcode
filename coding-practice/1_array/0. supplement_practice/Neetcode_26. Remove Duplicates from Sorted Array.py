@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         left, right = 0, 1
