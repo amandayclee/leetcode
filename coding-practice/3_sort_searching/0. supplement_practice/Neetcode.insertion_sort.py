@@ -6,7 +6,7 @@ class Pair:
         self.key = key
         self.value = value
 
-lass Solution:
+class Solution:
     def insertionSort(self, pairs: List[Pair]) -> List[List[Pair]]:
         if not pairs:
             return pairs
