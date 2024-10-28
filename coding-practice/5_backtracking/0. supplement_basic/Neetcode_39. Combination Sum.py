@@ -4,12 +4,13 @@ from typing import List
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         self.target = target
+        self.candidates = candidates
         self.res = []
-        self.dfs_helper(candidates, 0, [], 0)
+        self.dfs_helper(0, [], 0)
         
         return self.res
     
-    def dfs_helper(self, candidates, index, temp, curr_sum):
+    def dfs_helper(self, index, temp, curr_sum):
         if curr_sum == self.target:
             self.res.append(temp[:])
             return
@@ -17,9 +18,9 @@ class Solution:
         if curr_sum > self.target:
             return
         
-        for i in range(index, len(candidates)):
-            temp.append(candidates[i])
-            self.dfs_helper(candidates, i, temp, curr_sum + candidates[i])
+        for i in range(index, len(self.candidates)):
+            temp.append(self.candidates[i])
+            self.dfs_helper(i, temp, curr_sum + self.candidates[i])
             temp.pop()
 
         
