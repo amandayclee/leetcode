@@ -1,3 +1,4 @@
+# Count the unique paths from the top left to the bottom right. A single path may only move along 0's and can't visit the same cell more than once.
 
 class Solution:
     def problem(self, grid):
