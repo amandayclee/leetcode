@@ -5,20 +5,51 @@ class ArrayMatrixManipulationPractice:
     @staticmethod
     def sum_array(arr):
         # TODO: Fill in the logic
-        return 0
+        cur_sum = 0
+        for num in arr:
+            cur_sum += num
+        return cur_sum
+    
+    def sum_array_recursive(arr):
+        if not arr:
+            return 0
+        return arr[0] + ArrayMatrixManipulationPractice.sum_array_recursive(arr[1:])
 
     # Exercise 2: Maximum Element in Array
     # Given an array of integers, find and return the maximum element.
     @staticmethod
     def max_element(arr):
         # TODO: Fill in the logic
-        return 0
+        if not arr:
+            return None
+        
+        max_num = float('-inf')
+        for num in arr:
+            max_num = max(num, max_num)
+        
+        return max_num
+    
+    def max_elemenet_recursive(arr):
+        if not arr:
+            return None
+        
+        if len(arr) == 1:
+            return arr[0]
+        
+        rest_max = ArrayMatrixManipulationPractice.max_elemenet_recursive(arr[1:])
+        return arr[0] if arr[0] > rest_max else rest_max
 
     # Exercise 3: Reverse an Array
     # Given an array of integers, reverse the array and return it.
     @staticmethod
     def reverse_array(arr):
         # TODO: Fill in the logic
+        left, right = 0, len(arr) - 1
+        while left < right:
+            arr[left], arr[right] = arr[right], arr[left]
+            left += 1
+            right -= 1
+        
         return arr
 
     # Exercise 4: Left Rotation of Array
@@ -26,6 +57,29 @@ class ArrayMatrixManipulationPractice:
     @staticmethod
     def rotate_left(arr):
         # TODO: Fill in the logic
+        first_ele = arr[0]
+        for i in range(0, len(arr) - 1):
+            arr[i] = arr[i + 1]
+        
+        arr[-1] = first_ele
+        
+        return arr
+    
+    def rotate_left_cyclic(arr):
+        if len(arr) <= 1:
+            return arr
+            
+        n = len(arr)
+        temp = arr[0]
+        idx = 0
+        
+        for _ in range(n):
+            next_idx = (idx + 1) % n
+            next_temp = arr[next_idx]
+            arr[next_idx] = temp
+            temp = next_temp
+            idx = next_idx
+            
         return arr
 
     # Exercise 5: Right Rotation of Array
@@ -33,7 +87,31 @@ class ArrayMatrixManipulationPractice:
     @staticmethod
     def rotate_right(arr):
         # TODO: Fill in the logic
+        last_ele = arr[-1]
+        for i in range(len(arr) - 1, 0, -1):
+            arr[i] = arr[i - 1]
+            
+        arr[0] = last_ele
+        
         return arr
+    
+    def rotate_right_cyclic(arr):
+        if len(arr) <= 1:
+            return arr
+        
+        n = len(arr)
+        temp = arr[-1] 
+        idx = n - 1 
+        
+        for _ in range(n):
+            next_idx = (idx - 1) % n
+            next_temp = arr[next_idx]
+            arr[next_idx] = temp
+            temp = next_temp
+            idx = next_idx
+            
+        return arr
+            
 
     # Exercise 6: 2D Array Diagonal Sum
     # Given a square matrix, find and return the sum of the elements along both diagonals.
