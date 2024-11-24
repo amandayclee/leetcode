@@ -18,11 +18,10 @@ class NumMatrix:
 # SC O(m*n)
 
     def sumRegion(self, row1: int, col1: int, row2: int, col2: int) -> int:
-        row1, col1, row2, col2 = row1 + 1, col1 + 1, row2 + 1, col2 + 1
-        bottom_right = self.sum_matrix[row2][col2]
-        above = self.sum_matrix[row1 - 1][col2]
-        left = self.sum_matrix[row2][col1 - 1]
-        top_left = self.sum_matrix[row1 - 1][col1 - 1]
+        bottom_right = self.sum_matrix[row2 + 1][col2 + 1]
+        above = self.sum_matrix[row1][col2 + 1]
+        left = self.sum_matrix[row2 + 1][col1]
+        top_left = self.sum_matrix[row1][col1]
         
         return bottom_right - above - left + top_left
         
