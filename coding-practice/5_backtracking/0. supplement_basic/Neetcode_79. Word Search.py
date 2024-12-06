@@ -36,9 +36,9 @@ class Solution:
         return result
     
 
-# m is the nubmer of cells in the board
-# n is the length of the word
-# TC O(m * 4^n)
-# SC O(n)
+# m * n is the nubmer of cells in the board
+# l is the length of the word
+# TC O(m * n * 4^l)
+# SC O(m * n + l)
 
 Solution().exist([["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], "ABCCED")
