@@ -1,30 +1,39 @@
 from collections import defaultdict
-from typing import List
-
+from typing import Dict, List, Tuple
 
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         if len(strs) == 1:
             return [strs]
+
+        temp = {}
+
+        for word in strs:
+            key = self.get_frequency(word)
+            if key not in temp:
+                temp[key] = []
+            temp[key].append(word)
+            
+        return list(temp.values())
+
+    def get_frequency(self, word: str) -> Tuple[Dict[str, int]]:
+        frequency = [0] * 26
+
+        for char in word:
+            char_idx = ord(char) - ord('a')
+            frequency[char_idx] += 1
         
-        freq = defaultdict(list)
-        
-        for i in range(len(strs)): # O(n)
-            count = [0] * 26
-            
-            for j in strs[i]: # O(k)
-                idx = ord(j) - ord('a')
-                count[idx] += 1
-            
-            freq[tuple(count)].append(strs[i])
-            
-        # result = []
-        # for key in freq.keys():
-        #     result.append(freq[key])
-            
-        # return result
-        
-        return list(freq.values())
+        return tuple(frequency)
+
+if __name__ == "__main__":
+    solution = Solution()
     
-# TC O(n*m)
-# SC O(n*m) n 個長度為 m 的字
+    test_cases = [
+        # {"input": (["eat","tea","tan","ate","nat","bat"]), "expected_output": [["bat"],["nat","tan"],["ate","eat","tea"]]},
+        {"input": ([""]), "expected_output": [[""]]},
+        {"input": (["a"]), "expected_output": [["a"]]},
+    ]
+    for test_case in test_cases:
+        assert solution.groupAnagrams(test_case["input"]) == test_case["expected_output"]
+        
+
