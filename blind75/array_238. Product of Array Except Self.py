@@ -26,22 +26,26 @@ class Solution1:
     
 
 class Solution2:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
-        result = []
-
+    def productExceptSelf(self, nums: List[int]) -> List[int]:        
         prefix_product = [1] * (len(nums) + 1)
-        suffix_product = [1] * (len(nums) + 1)
-        	
-        for i in range(len(prefix_product) - 1):
+        suffix_product = [1] * (len(nums) + 1) # [1, 1, 1, 1, 1]
+        
+        for i in range(len(prefix_product) - 1): # 0, 1, 2, 3
             prefix_product[i + 1] = prefix_product[i] * nums[i]
-    
-        for i in range(len(suffix_product) - 1, 0, -1):
+            # [1, 2, 3, 4] 
+            # [1, 1, 2, 6, 24]
+        
+        for i in range(len(suffix_product) - 1, 0, -1): # 4, 3, 2, 1
             suffix_product[i - 1] = suffix_product[i] * nums[i - 1]
+        
+        answers = [1] * len(nums) # [1, 1, 1, 1]
+        
+        for i in range(len(answers)):
+            answers[i] = prefix_product[i] * suffix_product[i + 1]
 
-        for i in range(len(nums)):
-            result.append(prefix_product[i]*suffix_product[i + 1])
+        return answers
+
             
-        return result
     
 class Solution3:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
